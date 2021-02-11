@@ -17,7 +17,7 @@ describe('PoChartLineComponent', () => {
   const containerSize: PoChartContainerSize = {
     svgWidth: 200,
     svgHeight: 200,
-    svgPlottingAreaWidth: 20,
+    axisXLabelWidth: 72,
     svgPlottingAreaHeight: 20
   };
 
@@ -96,7 +96,7 @@ describe('PoChartLineComponent', () => {
 
         component['seriePathPointsDefinition'](component.containerSize, component.series, range);
 
-        const expectedResult = [{ coordinates: ' M104 25 L114 21', color: '#94DAE2' }];
+        const expectedResult = [{ coordinates: ' M104 25 L168 21', color: '#94DAE2' }];
 
         expect(component.seriesPathsCoordinates).toEqual(expectedResult);
         expect(component.seriesPathsCoordinates.length).toBe(1);
@@ -122,7 +122,7 @@ describe('PoChartLineComponent', () => {
               label: 'Vancouver',
               tooltipLabel: 'Vancouver: 10',
               data: 10,
-              xCoordinate: 114,
+              xCoordinate: 168,
               yCoordinate: 21
             }
           ]
@@ -154,7 +154,7 @@ describe('PoChartLineComponent', () => {
               label: undefined,
               tooltipLabel: '10',
               data: 10,
-              xCoordinate: 114,
+              xCoordinate: 168,
               yCoordinate: 8
             }
           ]
@@ -187,7 +187,7 @@ describe('PoChartLineComponent', () => {
               label: 'Vancouver',
               tooltipLabel: 'Vancouver: 10',
               data: 10,
-              xCoordinate: 114,
+              xCoordinate: 168,
               yCoordinate: 8
             }
           ]
@@ -218,7 +218,7 @@ describe('PoChartLineComponent', () => {
               label: 'Vancouver',
               tooltipLabel: 'Vancouver: 12',
               data: 12,
-              xCoordinate: 106.66666666666666,
+              xCoordinate: 178.66666666666666,
               yCoordinate: 0
             }
           ]
@@ -228,7 +228,7 @@ describe('PoChartLineComponent', () => {
 
         expect(component.seriesPointsCoordinates).toEqual(expectedPointsResult);
         expect(component.seriesPathsCoordinates).toEqual([
-          { coordinates: ' M93.33333333333333 8 L106.66666666666666 0', color: '#29B6C5' }
+          { coordinates: ' M93.33333333333333 8 L178.66666666666666 0', color: '#29B6C5' }
         ]);
       });
 
@@ -275,7 +275,7 @@ describe('PoChartLineComponent', () => {
               label: 'Vancouver',
               tooltipLabel: 'Vancouver: 0',
               data: 0,
-              xCoordinate: 100,
+              xCoordinate: 136,
               yCoordinate: 28
             }
           ]

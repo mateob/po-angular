@@ -126,5 +126,35 @@ describe('PoChartMathsService', () => {
         expect(service.verifyIfFloatOrInteger(<any>value)).toBeFalsy();
       });
     });
+
+    it('getLongestDataValue: should call `sortLongestData`', () => {
+      const spySortLongestData = spyOn(service, <any>'sortLongestData');
+
+      service.getLongestDataValue();
+
+      expect(spySortLongestData).toHaveBeenCalledWith([]);
+    });
+
+    it('getLongestDataValue: should call `sortLongestData` once if value is an array of string', () => {
+      const value = ['Vancouver', 'Otawa'];
+
+      const spySortLongestData = spyOn(service, <any>'sortLongestData');
+
+      service.getLongestDataValue(value);
+
+      expect(spySortLongestData).toHaveBeenCalledWith(value);
+      expect(spySortLongestData).toHaveBeenCalledTimes(1);
+    });
+
+    it('getLongestDataValue: should call `sortLongestData` twice if value is an array of poChartSerie', () => {
+      const value = [{ data: [1, 2, 3] }];
+
+      const spySortLongestData = spyOn(service, <any>'sortLongestData').and.callThrough();
+
+      service.getLongestDataValue(value);
+
+      expect(spySortLongestData).toHaveBeenCalled();
+      expect(spySortLongestData).toHaveBeenCalledTimes(2);
+    });
   });
 });
